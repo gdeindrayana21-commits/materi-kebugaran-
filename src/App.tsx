@@ -417,11 +417,14 @@ export default function App() {
             initialLKM={lkmData}
             onSaveLKM={handleSaveLKM}
             onGoToEvaluation={() => handleTabChange('evaluasi')}
+            onUpdateProfile={handleSaveProfile}
           />
         )}
 
         {activeTab === 'evaluasi' && (
           <EvaluationSection
+            profile={profile}
+            onUpdateProfile={handleSaveProfile}
             onScoreUpdated={handleScoreUpdated}
             onGoToReflection={() => handleTabChange('refleksi')}
           />
@@ -433,6 +436,7 @@ export default function App() {
             initialReflection={selfReflection}
             onSaveReflection={handleSaveSelfReflection}
             onGoToStudentVoice={() => handleTabChange('suara')}
+            onUpdateProfile={handleSaveProfile}
           />
         )}
 
@@ -441,6 +445,7 @@ export default function App() {
             profile={profile}
             feedbackList={feedbackList}
             onSubmitFeedback={handleAddFeedback}
+            onUpdateProfile={handleSaveProfile}
             onGoToTeacherDashboard={() => {
               setCurrentRole('guru');
               handleTabChange('guru');

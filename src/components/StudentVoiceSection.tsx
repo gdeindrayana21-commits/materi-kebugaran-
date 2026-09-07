@@ -13,19 +13,22 @@ import {
   ThumbsUp
 } from 'lucide-react';
 import { StudentFeedbackItem, StudentProfile } from '../types';
+import { StudentIdentityCard } from './StudentIdentityCard';
 
 interface StudentVoiceSectionProps {
   profile: StudentProfile;
   feedbackList: StudentFeedbackItem[];
   onSubmitFeedback: (item: StudentFeedbackItem) => void;
   onGoToTeacherDashboard?: () => void;
+  onUpdateProfile?: (profile: StudentProfile) => void;
 }
 
 export const StudentVoiceSection: React.FC<StudentVoiceSectionProps> = ({
   profile,
   feedbackList,
   onSubmitFeedback,
-  onGoToTeacherDashboard
+  onGoToTeacherDashboard,
+  onUpdateProfile
 }) => {
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [funMaterial, setFunMaterial] = useState('');
@@ -90,6 +93,15 @@ export const StudentVoiceSection: React.FC<StudentVoiceSectionProps> = ({
           <span className="font-extrabold text-blue-600">{feedbackList.length}</span>
         </div>
       </div>
+
+      {/* Identitas Peserta Didik Card */}
+      <StudentIdentityCard
+        profile={profile}
+        onUpdateProfile={onUpdateProfile}
+        title="Identitas Peserta Didik (Suara Siswa)"
+        subtitle="Isi/periksa nama dan kelas Anda untuk menyampaikan aspirasi belajar (dapat memilih mode anonim jika ingin)."
+        badgeText="Identitas"
+      />
 
       {/* Main Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">

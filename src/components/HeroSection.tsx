@@ -169,53 +169,51 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
           </div>
 
-          {/* Right Column: Student Info Card & Visual Elements */}
-          <div className="lg:col-span-4">
-            <div className="bg-white/15 backdrop-blur-md rounded-2xl p-5 border border-white/25 shadow-lg space-y-4">
-              <div className="flex items-center justify-between border-b border-white/15 pb-3">
+          {/* Right Column: Learning Module Information & Activity Stats */}
+          <div className="lg:col-span-4 space-y-4">
+            <div className="bg-white/15 backdrop-blur-md rounded-2xl p-5 border border-white/25 shadow-lg space-y-3.5">
+              <div className="flex items-center justify-between border-b border-white/15 pb-2.5">
                 <span className="text-xs font-extrabold uppercase tracking-wider text-amber-300">
-                  Data Siswa Aktif
+                  Modul Ajar PJOK
                 </span>
-                <button
-                  type="button"
-                  onClick={handleOpenProfile}
-                  className="text-xs bg-white/20 hover:bg-white/30 px-2.5 py-1 rounded-md font-semibold transition"
-                >
-                  Ubah Data
-                </button>
+                <span className="text-[10px] bg-emerald-400/20 text-emerald-300 border border-emerald-300/30 px-2 py-0.5 rounded-full font-bold">
+                  Fase E • Kelas X
+                </span>
               </div>
 
               <div className="space-y-2 text-xs">
                 <div className="flex justify-between">
-                  <span className="text-blue-100">Nama:</span>
-                  <span className="font-bold text-white truncate max-w-[170px]">{profile.nama}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-blue-100">Kelas & Absen:</span>
-                  <span className="font-bold text-white">{profile.kelas} (No. {profile.noAbsen})</span>
+                  <span className="text-blue-100">Satuan Pendidikan:</span>
+                  <span className="font-bold text-white text-right">SMA Negeri 1 Tejakula</span>
                 </div>
                 <div className="flex justify-between items-center bg-white/10 px-2.5 py-1.5 rounded-lg border border-white/15">
                   <span className="text-blue-100 font-medium">Guru PJOK:</span>
                   <span className="font-extrabold text-amber-300 flex items-center gap-1">
-                    👨‍🏫 {profile.namaGuru}
+                    👨‍🏫 {profile.namaGuru || 'Gde Bayu Indrayana, S.Pd.'}
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-blue-100">Tahun Pelajaran:</span>
                   <span className="font-medium text-white">{profile.tahunPelajaran}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-blue-100">Tanggal:</span>
-                  <span className="font-medium text-white">{profile.tanggal}</span>
-                </div>
               </div>
 
-              <div className="pt-3 border-t border-white/15">
+              {/* Informative Note for Identity Filling */}
+              <div className="bg-amber-400/20 border border-amber-300/40 rounded-xl p-3 text-[11px] text-amber-100 space-y-1">
+                <div className="flex items-center gap-1.5 font-bold text-amber-300">
+                  <span>💡 Petunjuk Pengisian Data:</span>
+                </div>
+                <p className="leading-relaxed">
+                  Peserta didik hanya perlu mengisi identitas saat mengerjakan <strong>LKM</strong>, <strong>Evaluasi</strong>, <strong>Refleksi Diri</strong>, atau <strong>Suara Siswa</strong>.
+                </p>
+              </div>
+
+              <div className="pt-2.5 border-t border-white/15">
                 <div className="flex justify-between text-xs mb-1.5">
-                  <span className="text-blue-100 font-semibold">Tujuan Pembelajaran Selesai:</span>
+                  <span className="text-blue-100 font-semibold">Tujuan Pembelajaran Tercapai:</span>
                   <span className="font-extrabold text-amber-300">{completedObjectivesCount}/{safeObjectives.length} ({objectiveProgress}%)</span>
                 </div>
-                <div className="w-full h-2.5 bg-black/20 rounded-full overflow-hidden">
+                <div className="w-full h-2 bg-black/20 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-gradient-to-r from-amber-400 to-emerald-400 transition-all duration-300"
                     style={{ width: `${objectiveProgress}%` }}
@@ -225,7 +223,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
 
             {/* Quick Fitness Stats Grid */}
-            <div className="grid grid-cols-2 gap-2 mt-4 text-center">
+            <div className="grid grid-cols-2 gap-2 text-center">
               <div className="bg-white/10 backdrop-blur-xs rounded-xl p-3 border border-white/15">
                 <div className="text-xl mb-1">💪</div>
                 <div className="text-xs font-bold text-white">9 Komponen</div>

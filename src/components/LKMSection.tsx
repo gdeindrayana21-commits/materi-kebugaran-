@@ -12,19 +12,22 @@ import {
   Sparkles
 } from 'lucide-react';
 import { LKMData, StudentProfile } from '../types';
+import { StudentIdentityCard } from './StudentIdentityCard';
 
 interface LKMSectionProps {
   profile: StudentProfile;
   initialLKM: LKMData;
   onSaveLKM: (data: LKMData) => void;
   onGoToEvaluation: () => void;
+  onUpdateProfile?: (profile: StudentProfile) => void;
 }
 
 export const LKMSection: React.FC<LKMSectionProps> = ({
   profile,
   initialLKM,
   onSaveLKM,
-  onGoToEvaluation
+  onGoToEvaluation,
+  onUpdateProfile
 }) => {
   const [lkm, setLkm] = useState<LKMData>(initialLKM);
   const [savedSuccess, setSavedSuccess] = useState(false);
@@ -115,32 +118,13 @@ export const LKMSection: React.FC<LKMSectionProps> = ({
       </div>
 
       {/* Identitas Peserta Didik Card */}
-      <div className="bg-slate-900 text-white rounded-2xl p-5 shadow-sm space-y-2">
-        <div className="flex justify-between items-center border-b border-slate-700 pb-2">
-          <span className="text-xs font-black uppercase tracking-wider text-amber-400">
-            Identitas Peserta Didik
-          </span>
-          <span className="text-xs text-slate-300 font-medium">{profile.sekolah}</span>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs pt-1">
-          <div>
-            <span className="text-slate-400 block text-[10px]">Nama:</span>
-            <strong className="text-white text-sm">{profile.nama}</strong>
-          </div>
-          <div>
-            <span className="text-slate-400 block text-[10px]">Kelas:</span>
-            <strong className="text-white text-sm">{profile.kelas}</strong>
-          </div>
-          <div>
-            <span className="text-slate-400 block text-[10px]">Nomor Absen:</span>
-            <strong className="text-white text-sm">{profile.noAbsen}</strong>
-          </div>
-          <div>
-            <span className="text-slate-400 block text-[10px]">Tanggal:</span>
-            <strong className="text-white text-sm">{profile.tanggal}</strong>
-          </div>
-        </div>
-      </div>
+      <StudentIdentityCard
+        profile={profile}
+        onUpdateProfile={onUpdateProfile}
+        title="Identitas Peserta Didik LKM"
+        subtitle="Isi/periksa nama dan nomor absen Anda sebelum mengerjakan lembar tugas ini."
+        badgeText="Wajib Diisi"
+      />
 
       {/* KEGIATAN 1 – MENGAMATI */}
       <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">

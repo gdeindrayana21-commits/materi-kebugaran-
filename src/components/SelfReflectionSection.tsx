@@ -10,19 +10,22 @@ import {
   Target
 } from 'lucide-react';
 import { StudentSelfReflection, StudentProfile } from '../types';
+import { StudentIdentityCard } from './StudentIdentityCard';
 
 interface SelfReflectionSectionProps {
   profile: StudentProfile;
   initialReflection: StudentSelfReflection;
   onSaveReflection: (data: StudentSelfReflection) => void;
   onGoToStudentVoice: () => void;
+  onUpdateProfile?: (profile: StudentProfile) => void;
 }
 
 export const SelfReflectionSection: React.FC<SelfReflectionSectionProps> = ({
   profile,
   initialReflection,
   onSaveReflection,
-  onGoToStudentVoice
+  onGoToStudentVoice,
+  onUpdateProfile
 }) => {
   const [reflection, setReflection] = useState<StudentSelfReflection>(initialReflection);
   const [isSaved, setIsSaved] = useState(false);
@@ -67,6 +70,15 @@ export const SelfReflectionSection: React.FC<SelfReflectionSectionProps> = ({
           <span>Simpan Refleksi Diri</span>
         </button>
       </div>
+
+      {/* Identitas Peserta Didik Card */}
+      <StudentIdentityCard
+        profile={profile}
+        onUpdateProfile={onUpdateProfile}
+        title="Identitas Peserta Didik Refleksi"
+        subtitle="Isi/periksa nama dan nomor absen untuk merekam refleksi belajar dan target komitmen pribadi Anda."
+        badgeText="Wajib Diisi"
+      />
 
       {/* Skala Pemahaman Bintang (1 to 5) */}
       <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-200 shadow-xs space-y-4">

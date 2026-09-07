@@ -16,14 +16,19 @@ import {
   Lightbulb
 } from 'lucide-react';
 import { QUIZ_QUESTIONS, ESSAY_QUESTIONS } from '../data/mockData';
-import { EssayQuestion } from '../types';
+import { EssayQuestion, StudentProfile } from '../types';
+import { StudentIdentityCard } from './StudentIdentityCard';
 
 interface EvaluationSectionProps {
+  profile: StudentProfile;
+  onUpdateProfile?: (profile: StudentProfile) => void;
   onScoreUpdated: (score: number, correctCount: number, category: string) => void;
   onGoToReflection: () => void;
 }
 
 export const EvaluationSection: React.FC<EvaluationSectionProps> = ({
+  profile,
+  onUpdateProfile,
   onScoreUpdated,
   onGoToReflection
 }) => {
@@ -142,6 +147,15 @@ export const EvaluationSection: React.FC<EvaluationSectionProps> = ({
           </button>
         </div>
       </div>
+
+      {/* Identitas Peserta Didik Card */}
+      <StudentIdentityCard
+        profile={profile}
+        onUpdateProfile={onUpdateProfile}
+        title="Identitas Peserta Didik Evaluasi"
+        subtitle="Identitas ini akan langsung tercatat bersama perolehan nilai evaluasi ke database rekap guru."
+        badgeText="Wajib Diisi"
+      />
 
       {/* SECTION A: PILIHAN GANDA */}
       {activeTab === 'pg' && (

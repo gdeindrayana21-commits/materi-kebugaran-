@@ -1,0 +1,6 @@
+{
+  "name": "Media PJOK Kelas X - Kebugaran Jasmani",
+  "description": "Media Pembelajaran Edukatif Interaktif PJOK Kelas X SMAN 1 Tejakula dengan tema Kebugaran Jasmani: Tubuh Bugar, Pikiran Segar, Prestasi Gemilang.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
